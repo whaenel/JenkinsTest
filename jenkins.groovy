@@ -14,7 +14,7 @@ node {
     // Call the method we defined in externalMethod.
         Parms.lookAtThis("Steve")
         //print Parms.'extFile'
-        library identifier: 'constants', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '7ca6d9cb-99fc-4770-886c-18f2947b67ec', id: '499b2680-d143-45eb-801b-5b4d0ab507a4', remote: 'https://github.com/whaenel/JenkinsTest.git', traits: [[$class: 'BranchDiscoveryTrait']]])
+        library identifier: 'UdeployTools@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '7ca6d9cb-99fc-4770-886c-18f2947b67ec', id: '499b2680-d143-45eb-801b-5b4d0ab507a4', remote: 'https://github.com/whaenel/JenkinsTest.git'])
 
         print Constants.extFile
    }
