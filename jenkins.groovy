@@ -14,6 +14,7 @@ node {
    }
    stage('Build') {
       // Run the maven build
+      print Parms
       print Parms.extFile
    }
    stage('Results') {
