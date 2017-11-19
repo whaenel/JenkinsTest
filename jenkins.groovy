@@ -13,7 +13,7 @@ node {
 
     // Call the method we defined in externalMethod.
     Parms.lookAtThis("Steve")
-    print Parms.extFile
+    print Parms.'extFile'
    
       
    }
