@@ -12,6 +12,7 @@ node {
    stage('Build') {
       // Run the maven build
       print env.extFile
+      print Parms.extFile2()
    }
    stage('Results') {
         print "sucessful"
