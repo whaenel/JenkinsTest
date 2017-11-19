@@ -1,5 +1,5 @@
 
-def extFile="comes form extern"
+env.extFile="comes form extern"
 
 // Methods in this file will end up as object methods on the object that load returns.
 def lookAtThis(String whoAreYou) {
