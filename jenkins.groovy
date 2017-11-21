@@ -11,8 +11,7 @@ node {
    }
    stage('Build') {
       // Run the maven build
-      print env.extFile
-      print Parms.extFile2()
+      build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
    stage('Results') {
         print "sucessful"

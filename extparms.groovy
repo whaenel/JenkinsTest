@@ -1,9 +1,9 @@
 
 env.extFile="comes form extern"
 
-extFile2="also from extern"
+String extFile2="also from extern"
 
-String extFile2(){
+public String extFile2(){
 return extFile2
 }
 
