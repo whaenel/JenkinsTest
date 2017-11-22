@@ -27,7 +27,7 @@ public class JenkinsHelper {
     }
     
     public static JenkinsHelper getHelper(String inUser, String inPass, String inUrl) {
-        return new AppHelper(inUser, inPass, inUrl)
+        return new JenkinsHelper(inUser, inPass, inUrl)
     }
 
     public startJob( String jobName, Map parameterMap, Boolean waitForCompletion) {
@@ -45,6 +45,27 @@ public class JenkinsHelper {
         if ( crub.size() > 0 ) {
             crumb = "-H \"" + crumb + "\""
         }
+                // now create url for starting the job
+        url= weburl+"/job/"+jobName +/build"
+        
+        if (parameterMap.size() > 0 ) {
+            url += "WithParameters?"
+            sep ="?"
+            for (key in parameterMap.getKeys() ){
+                url += sep + "${key.encodeURL()}=${parameterMap[key].encodeURL()}"
+            }
+            url += "&delay=0"
+        } else {
+            url += "?delay=0"
+        }
+        print url
+        
+        
+        status= sh ( returnStdout: false, returnStatus: true, script: "curl -X POST -u \"${creds}\" ${crunb} '${url}' " )
+        
+        
+        //curl -X POST -u walter:passwordOrToken -H "Jenkins-Crumb:6c14d58527881a8635586ea4d3310e19" "http://localhost:8080/job/StartTestDummy/buildWithParameters?User=Simon&delay=0"
+
 
     }
 }
