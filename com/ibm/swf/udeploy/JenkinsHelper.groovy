@@ -45,7 +45,7 @@ public class JenkinsHelper {
             url += "?delay=0"
         print url
         
-        crump =sh returnStdout: true, returnStatus: false, script: " curl -u \"${creds}\" '${weburl}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)'"
+        crump =sh returnStdout: true, returnStatus: false, script: " curl -u \"${creds}\" \"${weburl}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)\""
         print crump
         if ( crumb.indexOf("Error 404 Not Found") >= 0 ) {
             crumb = ""
