@@ -45,7 +45,7 @@ public class JenkinsHelper {
             url += "?delay=0"
         print url
         
-        crump =sh returnStdout: true, returnStatus: false, script: " curl -u \"${creds}\" \"${weburl}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)\""
+        crump =sh ( returnStdout: true, returnStatus: false, script: " curl -u \"${creds}\" '${weburl}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)'")
         print crump
         if ( crumb.indexOf("Error 404 Not Found") >= 0 ) {
             crumb = ""
@@ -54,7 +54,7 @@ public class JenkinsHelper {
         if ( crub.size() > 0 ) {
             crumb = "-H \"" + crumb + "\""
         }
-        status= sh returnStdout: false, returnStatus: true, script: "curl -X POST -u \"${creds}\" ${crunb} '${url}' "
+        status= sh ( returnStdout: false, returnStatus: true, script: "curl -X POST -u \"${creds}\" ${crunb} '${url}' " )
         
         
         //curl -X POST -u walter:passwordOrToken -H "Jenkins-Crumb:6c14d58527881a8635586ea4d3310e19" "http://localhost:8080/job/StartTestDummy/buildWithParameters?User=Simon&delay=0"
