@@ -15,9 +15,9 @@ node {
       build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
    stage('buid with curl') {
-        jHelper=JenkinsHelper.getHelper("walter",JPASS,"http://localhost:8080/")
+        helper=jHelper.JenkinsHelper.getHelper("walter",JPASS,"http://localhost:8080/")
         params = [ "user":"Sarah"]
-        jHelper.startJob("StartTestDummy", params, true )
+        helper.startJob("StartTestDummy", params, true )
         print "sucessful"
    }
 }
