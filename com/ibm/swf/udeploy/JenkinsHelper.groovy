@@ -57,6 +57,7 @@ public class JenkinsHelper {
             url += "&delay=0"
         } else {
             url += "?delay=0"
+        }
         print url
         
         
