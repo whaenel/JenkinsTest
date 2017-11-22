@@ -31,9 +31,23 @@ public class JenkinsHelper {
     }
 
     public startJob( String jobName, Map parameterMap, Boolean waitForCompletion) {
+        def creds = jenkinsUser + ":" + jenkinsPass
         
+        // create the url to get the crumb
+        def url = weburl + '/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)'
+        print url 
+        crump =sh ( returnStdout: true, returnStatus: false, script: "curl -u \"${creds}\" \"${url}\"")
+        print crump
+        if ( crumb.indexOf("Error 404 Not Found") >= 0 ) {
+            crumb = ""
+        }
+        crumb = crumb.trim()
+        if ( crub.size() > 0 ) {
+            crumb = "-H \"" + crumb + "\""
+        }
+        // now create url for starting the job
         url= weburl+"/job/"+jobName +/build"
-        creds = jenkinsUser + ":" + jenkinsPass
+        
         if (parameterMap.size() > 0 ) {
             url += "WithParameters?"
             sep ="?"
@@ -45,15 +59,7 @@ public class JenkinsHelper {
             url += "?delay=0"
         print url
         
-        crump =sh ( returnStdout: true, returnStatus: false, script: " curl -u \"${creds}\" '${weburl}/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,\":\",//crumb)'")
-        print crump
-        if ( crumb.indexOf("Error 404 Not Found") >= 0 ) {
-            crumb = ""
-        }
-        crumb = crumb.trim()
-        if ( crub.size() > 0 ) {
-            crumb = "-H \"" + crumb + "\""
-        }
+        
         status= sh ( returnStdout: false, returnStatus: true, script: "curl -X POST -u \"${creds}\" ${crunb} '${url}' " )
         
         
