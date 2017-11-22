@@ -46,11 +46,11 @@ public class JenkinsHelper {
             crumb = "-H \"" + crumb + "\""
         }
                 // now create url for starting the job
-        url= weburl+"/job/"+jobName +/build"
+        url= weburl+'/job/'+jobName +'/build'
         
         if (parameterMap.size() > 0 ) {
-            url += "WithParameters?"
-            sep ="?"
+            url += 'WithParameters'
+            sep ='?'
             for (key in parameterMap.getKeys() ){
                 url += sep + "${key.encodeURL()}=${parameterMap[key].encodeURL()}"
             }
