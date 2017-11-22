@@ -19,14 +19,14 @@ public class JenkinsHelper {
     def  jenkinsPass
     def weburl
  
-    public AppHelper(String inUser, String inPass, String inUrl) {
+    public JenkinsHelper(String inUser, String inPass, String inUrl) {
         jenkinsUser = inUser
         jenkinsPass = inPass
         weburl = inUrl
 
     }
     
-    public static AppHelper getHelper(String inUser, String inPass, String inUrl) {
+    public static JenkinsHelper getHelper(String inUser, String inPass, String inUrl) {
         return new AppHelper(inUser, inPass, inUrl)
     }
 
