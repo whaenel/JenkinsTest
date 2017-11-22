@@ -1,10 +1,11 @@
 
-
+//import com.ibm.swf.udeploy
 
 node {
    def mvnHome
    git changelog: false, credentialsId: '7ca6d9cb-99fc-4770-886c-18f2947b67ec', url: 'https://github.com/whaenel/JenkinsTest.git'
    def Parms=load ("extparms.groovy")
+   def jHelper = load ("com/ibm/swf/udeploy/JenkinsHelper.groovy")
    stage('Preparation') { // for display purposes
         Parms.lookAtThis("Steve")
         print env.extFile
@@ -13,7 +14,10 @@ node {
       // Run the maven build
       build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
-   stage('Results') {
+   stage('buid with curl') {
+        jHelper=JenkinsHelper.getHelper("walter",JPASS,"http://localhost:8080/")
+        params = [ "user":"Sarah"]
+        jHelper.startJob("StartTestDummy", params, true )
         print "sucessful"
    }
 }
