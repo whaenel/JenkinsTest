@@ -10,9 +10,6 @@ package com.ibm.swf.udeploy
 
 import java.net.URLEncoder
 
-String.metaClass.encodeURL = {
-   java.net.URLEncoder.encode(delegate, "UTF-8")
-}
 
 public class JenkinsHelper {
     def jenkinsUser
@@ -29,6 +26,7 @@ public class JenkinsHelper {
     public static JenkinsHelper getHelper(String inUser, String inPass, String inUrl) {
         return new JenkinsHelper(inUser, inPass, inUrl)
     }
+    
 
     public startJob( String jobName, Map parameterMap, Boolean waitForCompletion) {
         def creds = jenkinsUser + ":" + jenkinsPass
@@ -52,7 +50,7 @@ public class JenkinsHelper {
             url += 'WithParameters'
             sep ='?'
             for (key in parameterMap.getKeys() ){
-                url += sep + "${key.encodeURL()}=${parameterMap[key].encodeURL()}"
+                url += sep + "${URLEncoder.encode(key, "UTF-8")}=${URLEncoder.encode(parameterMap[key], "UTF-8")}"
             }
             url += '&delay=0'
         } else {
