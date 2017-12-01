@@ -1,5 +1,5 @@
 
-//import com.ibm.swf.udeploy
+import com.urbancode.ud.client.ApplicationClient
 
 node {
    def mvnHome
