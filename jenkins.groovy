@@ -16,13 +16,14 @@ node {
    */
    stage('Build') {
       ApplicationClient client = new ApplicationClient("walter",JPASS,"http://localhost:8080/")
+      println "got the client"
       // Run the maven build
       //build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
    stage('buid with curl') {
-        JenkinsHelper helper= new JenkinsHelper("walter",JPASS,"http://localhost:8080/")
+        //JenkinsHelper helper= new JenkinsHelper("walter",JPASS,"http://localhost:8080/")
         params = [ "user":"Sarah"]
-        helper.startJob("StartTestDummy", params, true )
+        //helper.startJob("StartTestDummy", params, true )
         print "sucessful"
    }
 }
