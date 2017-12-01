@@ -15,7 +15,7 @@ node {
    }
    */
    stage('Build') {
-      ApplicationClient client = new ApplicationClient("walter",JPASS,"http://localhost:8080/")
+      ApplicationClient client = new ApplicationClient("walter","password","http://localhost:8080/")
       println "got the client"
       // Run the maven build
       //build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
