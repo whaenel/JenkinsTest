@@ -1,5 +1,6 @@
 
 import com.urbancode.ud.client.ApplicationClient
+import com.ibm.swf.udeploy.JenkinsHelper
 
 node {
    def mvnHome
@@ -18,7 +19,7 @@ node {
       //build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
    stage('buid with curl') {
-        helper=jHelper.JenkinsHelper.getHelper("walter",JPASS,"http://localhost:8080/")
+        JenkinsHelper helper= new JenkinsHelper("walter",JPASS,"http://localhost:8080/")
         params = [ "user":"Sarah"]
         helper.startJob("StartTestDummy", params, true )
         print "sucessful"
