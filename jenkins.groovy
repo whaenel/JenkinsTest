@@ -5,7 +5,7 @@ node {
    def mvnHome
    git changelog: false, credentialsId: '7ca6d9cb-99fc-4770-886c-18f2947b67ec', url: 'https://github.com/whaenel/JenkinsTest.git'
    def Parms=load ("extparms.groovy")
-   def jHelper = load ("com/ibm/swf/udeploy/JenkinsHelper.groovy")
+   def jHelper = load ("src/com/ibm/swf/udeploy/JenkinsHelper.groovy")
    stage('Preparation') { // for display purposes
         Parms.lookAtThis("Steve")
         print env.extFile
