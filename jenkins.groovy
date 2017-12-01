@@ -1,6 +1,6 @@
 
 import com.urbancode.ud.client.ApplicationClient
-import com.ibm.swf.udeploy.JenkinsHelper
+//import com.ibm.swf.udeploy.JenkinsHelper
 
 node {
    def mvnHome
