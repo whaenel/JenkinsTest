@@ -10,11 +10,12 @@ node {
    stage('Preparation') { // for display purposes
         Parms.lookAtThis("Steve")
         print env.extFile
-        */
+        
    }
+   */
    stage('Build') {
       // Run the maven build
-      build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
+      //build job: 'StartRemoteTestDummy', parameters: [string(name: 'User', value: 'Sarah')]
    }
    stage('buid with curl') {
         helper=jHelper.JenkinsHelper.getHelper("walter",JPASS,"http://localhost:8080/")
